@@ -4,6 +4,7 @@ import 'LoginWithMCI_Controller.dart';
 import 'dart:developer';
 import 'package:mci_web_project/Resources/UnicornOutlineButton.dart';
 import 'package:mci_web_project/MyProfile/MyProfile_View.dart';
+import 'Register/Register_View.dart';
 
 class LoginWithMCI_View extends StatefulWidget {
 
@@ -199,7 +200,24 @@ class LoginWithMCI_State extends State<LoginWithMCI_View>{
                 ),
 
               ),
-              SizedBox(height: 10),
+              SizedBox(
+                height: 30,
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return Register_View();
+                      }));
+                },
+                child : Text(
+                  "Pas encore inscrit ? Inscrivez-vous dès maintenant en cliquant ici !",
+                  style: TextStyle(
+                    decoration: TextDecoration.underline
+                  ),
+                )
+              ),
+              SizedBox(height: 100),
               //ErrorMessage
               Text(
                   sErrorMessage,
@@ -208,25 +226,26 @@ class LoginWithMCI_State extends State<LoginWithMCI_View>{
               SizedBox(height: 10),
 
               // Login Button
-              UnicornOutlineButton(
-                  strokeWidth: 2,
-                  radius: 20,
-                  gradient: LinearGradient(colors:[Colors.green[900], Colors.green[900]]),
-                  child:
-                  Container(
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                          'Se connecter',
-                          style: new TextStyle(
-                              fontSize: 14,
-                            color : Colors.white
-                          )
-                      )
-                  ),
-                  onPressed: (){
+              InkWell(
+                  onTap: () {
                     _loginResult();
                   }
+                  ,
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.green[900]
 
+                    ),
+                    child : Text(
+                            'Se connecter',
+                            style: new TextStyle(color: Colors.white,
+                              fontSize: 14,
+                            )
+                        ),
+                  )
               ),
               SizedBox(
                 height: 10,

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'ProfessionalProfile_Model.dart';
 import 'package:mci_web_project/Common/Product.dart';
 import 'package:mci_web_project/Common/Professional.dart';
+import 'package:mci_web_project/Login/LoginWithMCI_View.dart';
+import 'package:mci_web_project/MyProfile/MyProfile_View.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class ProfessionnelProfile_View extends StatefulWidget {
@@ -141,7 +144,17 @@ class ProfessionnelProfile_State extends State<ProfessionnelProfile_View>{
                               IconButton(
                                   icon: Icon(Icons.person_pin)
                                   , onPressed: (){
-
+                                if(FirebaseAuth.instance.currentUser != null){
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return MyProfile_View();
+                                      }));
+                                }else{
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return LoginWithMCI_View();
+                                      }));
+                                }
                               }
                               )
                             ],
